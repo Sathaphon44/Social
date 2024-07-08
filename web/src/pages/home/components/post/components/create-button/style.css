@@ -1,0 +1,33 @@
+.create-post-container {
+    display: grid;
+    grid-template-columns: minmax(300px, 900px);
+    justify-content: center;
+    margin-bottom: 10px;
+
+    header {
+        display: block;
+        background-color: rgb(254, 254, 254);
+        padding: 20px;
+        box-shadow: 1px 1px 5px 1px rgb(0, 0, 0, 0.2);
+        border-radius: 5px;
+        grid-template-columns: 1fr 1fr;
+
+        button {
+            cursor: pointer;
+            width: 100%;
+            font-size: 1em;
+            color: #585858;
+            background-color: rgb(237, 237, 237);
+            text-align: center;
+            padding: 10px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+        }
+
+
+        button:hover {
+            background-color: rgb(255, 255, 255);
+        }
+    }
+
+}

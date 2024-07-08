@@ -1,0 +1,177 @@
+.post-container {
+    display: grid;
+    grid-template-columns: minmax(300px, 900px);
+    justify-content: center;
+    gap: 20px;
+
+    .non-post {
+        padding: 20px;
+        box-shadow: 1px 1px 5px 1px rgb(0, 0, 0, 0.2);
+        background-color: rgb(255, 255, 255);
+        text-align: center;
+    }
+
+    .post-content {
+        height: max-content;
+        display: grid;
+        grid-template-rows: 20px max-content max-content;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 1px 1px 5px 1px rgb(0, 0, 0, 0.2);
+        gap: 20px;
+        background-color: rgb(255, 255, 255);
+
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .profile-user {
+                display: flex;
+                flex-direction: row;
+                align-items: start;
+                gap: 10px;
+
+                div {
+                    display: flex;
+                    flex-direction: column;
+
+                    span:nth-child(1) {
+                        font-size: 1em;
+                    }
+
+                    span:nth-child(2) {
+                        font-size: 12px;
+                    }
+                }
+
+            }
+
+            .menu {
+                position: relative;
+                cursor: pointer;
+
+                button {
+                    border: none;
+                    cursor: pointer;
+                    border-radius: 4px;
+                    height: 100%;
+                    text-align: center;
+                    align-items: center;
+                    background-color: #fff;
+                }
+
+                .menu-list {
+                    opacity: 0;
+                    position: absolute;
+                    background-color: #fff;
+                    padding: 10px;
+                    border-radius: 5px;
+                    box-shadow: 1px 1px 5px 1px rgb(0, 0, 0, 0.2);
+                    right: 0px;
+
+                    ul {
+                        list-style: none;
+                        padding: 0;
+                        margin: 0;
+
+                        li {
+                            padding: 5px 30px;
+                            cursor: pointer;
+                            border-radius: 5px;
+                        }
+
+                        li:hover {
+                            background-color: rgb(0, 0, 0, 0.1);
+                        }
+                    }
+                }
+
+                .menu-list.show {
+                    opacity: 1;
+                }
+            }
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        footer {
+            display: grid;
+            grid-template-rows: max-content max-content max-content;
+            align-items: center;
+            padding: 5px 0;
+            gap: 5px;
+
+            hr {
+                width: 100%;
+                border: 1px solid #d2d2d2;
+            }
+
+            .count-all {
+                width: 100%;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                gap: 20px;
+
+                p {
+                    font-size: 14px;
+                }
+
+                .count_comment {
+                    p {
+                        cursor: pointer;
+                        &:hover {
+                            color: rgb(0, 149, 255);
+                        }
+                    }
+                }
+            }
+
+            .button-action {
+                width: 100%;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                height: max-content;
+                justify-content: space-between;
+                align-items: center;
+                gap: 5px;
+                height: max-content;
+                /* padding: 10px; */
+
+                svg {
+                    width: 1.5em;
+                }
+
+                .like,
+                .comment {
+                    border: none;
+                    cursor: pointer;
+                    border-radius: 4px;
+                    height: 100%;
+                    text-align: center;
+                    align-items: center;
+                }
+
+                .like.show {
+                    color: rgb(0, 149, 255);
+                }
+
+                button {
+                    padding: 5px;
+                    background-color: #fff;
+
+                    &:hover {
+                        background-color: #e7e7e7;
+                    }
+                }
+
+            }
+        }
+    }
+
+}

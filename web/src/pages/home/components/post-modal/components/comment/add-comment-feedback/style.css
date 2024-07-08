@@ -1,0 +1,55 @@
+.add-comment-feedback {
+    margin: 10px 0;
+    display: grid;
+    grid-template-columns: max-content minmax(200px, max-content) max-content;
+    gap: 10px;
+
+    form {
+        display: grid;
+        grid-template-columns: minmax(200px, 786px);
+        box-shadow: 1px 1px 4px 1px #bdbdbd;
+        padding: 10px;
+        border-radius: 5px;
+        gap: 10px;
+
+        textarea {
+            border: none;
+            outline: none;
+            width: 100%;
+            min-height: 50px;
+            max-height: 300px;
+            resize: vertical;
+            padding: 5px;
+        }   
+
+        div {
+            display: grid;
+            grid-template-columns: max-content max-content;
+            justify-content: end;
+            gap: 10px;
+
+            button {
+                width: max-content;
+                border: none;
+                cursor: pointer;
+                background-color: #f8f8f800;
+            }
+
+            button:nth-child(1) {
+                color: #f0d648;
+
+                &:hover {
+                    color: #d2ba2e;
+                }
+            }
+
+            button:nth-child(2) {
+                color: #000000;
+
+                &:hover {
+                    color: #636363;
+                }
+            }
+        }
+    }
+}

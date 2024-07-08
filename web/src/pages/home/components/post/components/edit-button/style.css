@@ -1,0 +1,77 @@
+.popup-edit {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+
+    .form-popup-edit {
+        display: flex;
+        flex-direction: column;
+        background: white;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        max-width: 500px;
+        width: 100%;
+        z-index: 1001;
+        gap: 20px;
+
+        header {
+            display: flex;
+            justify-content: space-between;
+
+            button {
+                border: none;
+                cursor: pointer;
+                border-radius: 4px;
+                height: 100%;
+                text-align: center;
+                align-items: center;
+                background-color: #fff;
+            }
+
+            button:hover {
+                color: #bebebe;
+            }
+        }
+
+        main {
+            form {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+
+                textarea {
+                    max-height: 500px;
+                    min-height: 200px;
+                    resize: none;
+                    border: 1px solid #ccc;
+                    border-radius: 4px;
+                    padding: 10px;
+                }
+
+                button {
+                    font-size: 1em;
+                    padding: 10px;
+                    border-radius: 5px;
+                    background-color: #ccc;
+                    color: rgb(48, 48, 48);
+                    border: none;
+                    cursor: pointer;
+                    width: 100%;
+                    text-align: center;
+                }
+
+                button:hover {
+                    background-color: rgb(179, 179, 179);
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,85 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model comment {
+  id               Int                @id @default(autoincrement())
+  content          String             @db.Text
+  create_at        DateTime           @default(now()) @db.Timestamp(0)
+  update_at        DateTime           @default(now()) @db.Timestamp(0)
+  postId           Int
+  userId           String             @db.VarChar(255)
+  post             post               @relation(fields: [postId], references: [id], onDelete: Cascade, map: "postId_cfk")
+  users            users              @relation(fields: [userId], references: [id], onDelete: Cascade, map: "userId_cfk")
+  comment_feedback comment_feedback[]
+
+  @@index([postId], map: "postId_cfk_idx")
+  @@index([userId], map: "userId_cfk")
+}
+
+model comment_feedback {
+  id        Int      @id @default(autoincrement())
+  content   String   @db.Text
+  create_at DateTime @default(now()) @db.Timestamp(0)
+  update_at DateTime @default(now()) @db.Timestamp(0)
+  userId    String   @db.VarChar(255)
+  postId    Int
+  commentId Int
+  comment   comment  @relation(fields: [commentId], references: [id], onDelete: Cascade, map: "commentId_cffk")
+  post      post     @relation(fields: [postId], references: [id], onDelete: Cascade, map: "postId_cffk")
+  users     users    @relation(fields: [userId], references: [id], onDelete: Cascade, map: "userId_cffk")
+
+  @@index([commentId], map: "commentId_cffk")
+  @@index([postId], map: "postId_cffk")
+  @@index([userId], map: "userId_cffk")
+}
+
+model post {
+  id               Int                @id @default(autoincrement())
+  content          String             @db.Text
+  userId           String             @db.VarChar(255)
+  create_at        DateTime           @default(now()) @db.Timestamp(0)
+  update_at        DateTime           @default(now()) @db.Timestamp(0)
+  status           post_status?       @default(public)
+  comment          comment[]
+  comment_feedback comment_feedback[]
+  users            users              @relation(fields: [userId], references: [id], onDelete: Cascade, map: "userId_pfk")
+  post_like        post_like[]
+
+  @@index([userId], map: "userId_fk")
+}
+
+model post_like {
+  id        Int      @id @default(autoincrement())
+  postId    Int
+  userId    String   @db.VarChar(255)
+  create_at DateTime @default(now()) @db.Timestamp(0)
+  post      post     @relation(fields: [postId], references: [id], onDelete: Cascade, map: "postId_plfk")
+  users     users    @relation(fields: [userId], references: [id], onDelete: Cascade, map: "userId_plfk")
+
+  @@index([postId], map: "postId_plfk")
+  @@index([userId], map: "userID_plfk")
+}
+
+model users {
+  id               String             @id @db.VarChar(255)
+  email            String             @unique(map: "email_UNIQUE") @db.VarChar(255)
+  username         String             @db.VarChar(255)
+  password         String             @db.VarChar(255)
+  create_at        DateTime           @default(now()) @db.Timestamp(0)
+  update_at        DateTime           @default(now()) @db.Timestamp(0)
+  comment          comment[]
+  comment_feedback comment_feedback[]
+  post             post[]
+  post_like        post_like[]
+}
+
+enum post_status {
+  public
+  private
+}
